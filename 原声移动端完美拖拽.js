@@ -1,8 +1,8 @@
 /**
  * Created by jingdian on 2017/5/5.
  */
-function defaultEvent(e) {
-    e.preventDefault() || event.preventDefault();
+function defaultEvent() {
+    event.preventDefault();
 }
 function touchMove(){
 	//获取需要拖拽的元素
@@ -13,7 +13,7 @@ function touchMove(){
         var y1 = finger.pageY;
         var l = Add.offsetLeft;
         var t = Add.offsetTop;
-        document.addEventListener("touchmove",defaultEvent,false);
+        document.addEventListener("touchmove",defaultEvent(),false);
         function move(){
             var f2 = event.touches[0];
             var x2 = f2.pageX;
@@ -36,7 +36,7 @@ function touchMove(){
         Add.addEventListener("touchmove", move, false);
         Add.addEventListener("touchend", function(){
             Add.removeEventListener("touchmove", move, false);
-            document.removeEventListener("touchmove",defaultEvent,false);
+            document.removeEventListener("touchmove",defaultEvent(),false);
         }, false);
     }, true);
 
